@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — Florent Boyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">~/<span>florent-boyer</span></div>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="formation.html">Formation</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html" class="active">Projets</a>
+      <a href="stage.html">Stage</a>
+      <a href="veille.html">Veille techno</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="cv.pdf" target="_blank" rel="noopener" class="nav-cv">Télécharger mon CV</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header wrap">
+    <div class="section-label">// 04</div>
+    <h1 class="page-title">Projets réalisés</h1>
+    <p class="page-sub">Réalisations menées dans le cadre de la formation.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">Infrastructure</span>
+        <h3>Déploiement d'un serveur Active Directory</h3>
+        <p>Mise en place d'un domaine AD avec gestion des utilisateurs, groupes et stratégies de sécurité (GPO) pour un parc de [X] postes.</p>
+        <div class="project-stack"><span>Windows Server</span><span>AD DS</span><span>GPO</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Réseau</span>
+        <h3>Segmentation réseau par VLAN</h3>
+        <p>Conception et configuration d'une architecture réseau segmentée avec VLANs, routage inter-VLAN et règles de filtrage.</p>
+        <div class="project-stack"><span>Cisco</span><span>VLAN</span><span>Routage</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Virtualisation</span>
+        <h3>Environnement de virtualisation</h3>
+        <p>Installation et administration d'un hyperviseur avec plusieurs machines virtuelles pour simuler une infrastructure d'entreprise.</p>
+        <div class="project-stack"><span>Proxmox</span><span>VMware</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Supervision</span>
+        <h3>Supervision d'un parc informatique</h3>
+        <p>Déploiement d'un outil de supervision pour surveiller la disponibilité des services et générer des alertes.</p>
+        <div class="project-stack"><span>Zabbix</span><span>SNMP</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Florent Boyer — Portfolio BTS SIO SISR
+</footer>
+
+</body>
+</html>
