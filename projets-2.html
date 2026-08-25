@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — Florent Boyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">~/<span>florent-boyer</span></div>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="formation.html">Formation</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html" class="active">Projets</a>
+      <a href="stage.html">Stage</a>
+      <a href="veille.html">Veille techno</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="cv.pdf" target="_blank" rel="noopener" class="nav-cv">Télécharger mon CV</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header wrap">
+    <div class="section-label">// 04</div>
+    <h1 class="page-title">Projets réalisés</h1>
+    <p class="page-sub">Réalisations menées dans le cadre de la formation.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">Stockage · Infra</span>
+        <h3>NAS QNAP TS-h1277AXU-RP — RAID 5</h3>
+        <p>Montage physique en baie rack et configuration d'un NAS QNAP pour le stockage centralisé de l'infrastructure. [X] disques de [X] To en RAID 5, avec cache SSD pour les performances.</p>
+        <div class="project-stack"><span>QNAP</span><span>RAID 5</span><span>SSD Cache</span><span>QuTS hero</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Système · Linux</span>
+        <h3>Migration Ubuntu 18.04 → 22.04</h3>
+        <p>Mise à jour d'un serveur Ubuntu en conditions réelles : session <code>screen</code> protégée contre les coupures SSH, diagnostic réseau (passerelle manquante corrigée via <code>arp -a</code> / <code>ip route</code>), correction permanente dans Netplan, puis migration via <code>do-release-upgrade</code>.</p>
+        <div class="project-stack"><span>Ubuntu</span><span>SSH</span><span>screen</span><span>Netplan</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Virtualisation</span>
+        <h3>Environnement de virtualisation avec Proxmox</h3>
+        <p>Installation et administration d'un hyperviseur Proxmox VE avec plusieurs machines virtuelles (Debian 11, Ubuntu) pour simuler une infrastructure d'entreprise.</p>
+        <div class="project-stack"><span>Proxmox</span><span>Debian 11</span><span>Ubuntu</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Réseau · Simulation</span>
+        <h3>Projets Cisco Packet Tracer</h3>
+        <p>Conception et configuration de topologies réseau (VLAN, routage, DHCP) sur des équipements Cisco simulés avec Packet Tracer.</p>
+        <div class="project-stack"><span>Cisco</span><span>VLAN</span><span>Routage</span><span>Packet Tracer</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Scripting · Automatisation</span>
+        <h3>Scripts d'administration système & réseau</h3>
+        <p>Collection de scripts Bash pour automatiser des tâches d'administration répétitives — ne pas refaire à la main ce qui peut être automatisé.</p>
+        <div class="project-stack"><span>Bash</span><span>Linux</span><span>curl</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Sécurité réseau</span>
+        <h3>Analyse de trafic réseau</h3>
+        <p>Capture et analyse de paquets réseau pour comprendre le fonctionnement des protocoles et identifier des anomalies de trafic.</p>
+        <div class="project-stack"><span>Wireshark</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Florent Boyer — Portfolio BTS SIO SISR
+</footer>
+
+</body>
+</html>
