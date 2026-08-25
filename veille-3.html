@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille technologique — Florent Boyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">~/<span>florent-boyer</span></div>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="formation.html">Formation</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+      <a href="stage.html">Stage</a>
+      <a href="veille.html" class="active">Veille techno</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="cv.pdf" target="_blank" rel="noopener" class="nav-cv">Télécharger mon CV</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header wrap">
+    <div class="section-label">// 06 — veille technologique</div>
+    <h1 class="page-title">L'implémentation de l'intelligence artificielle dans les entreprises</h1>
+    <p class="page-sub">Suivi régulier de l'actualité et des évolutions autour de l'adoption de l'IA par les organisations.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="veille-block">
+      <h3>Pourquoi ce sujet ?</h3>
+      <p>
+        L'intelligence artificielle transforme progressivement la façon dont les entreprises travaillent :
+        automatisation de tâches, aide à la décision, support client, cybersécurité, gestion des infrastructures...
+        En tant que futur technicien en systèmes et réseaux, comprendre comment l'IA s'intègre dans les
+        organisations me permet d'anticiper les évolutions du métier et les nouveaux outils que je serai amené
+        à utiliser ou administrer.
+      </p>
+    </div>
+
+    <div class="veille-block">
+      <h3>Axes de veille</h3>
+      <ul>
+        <li>Outils d'IA générative utilisés en entreprise (support, rédaction, développement).</li>
+        <li>IA appliquée à l'administration système et réseau (supervision intelligente, détection d'anomalies).</li>
+        <li>Impact sur la cybersécurité (détection de menaces assistée par IA, mais aussi nouveaux risques).</li>
+        <li>Enjeux organisationnels : formation des équipes, adaptation des postes, cadre légal (RGPD, AI Act).</li>
+      </ul>
+    </div>
+
+    <div class="veille-block">
+      <h3>Méthodologie</h3>
+      <p>
+        Cette veille s'appuie sur un flux RSS agrégeant l'actualité récente autour du sujet, complété par une
+        sélection de sources spécialisées consultées régulièrement. Le flux ci-dessous s'actualise automatiquement
+        à chaque visite de la page.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="rss-header">
+      <div class="section-label" style="margin-bottom:0;">// actualités en direct</div>
+      <div class="rss-status">
+        <span class="pulse"></span>
+        <span id="rss-status-text">Connexion au flux…</span>
+      </div>
+    </div>
+
+    <div id="rss-container">
+      <div class="rss-empty">Chargement des dernières actualités…</div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim);" id="rss-updated"></span>
+      <button class="rss-refresh" onclick="loadVeilleRSS()">↻ Actualiser maintenant</button>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="veille-block">
+      <h3>Mes sources de veille</h3>
+      <div class="sources-grid">
+        <a class="source-chip" href="https://www.usine-digitale.fr/intelligence-artificielle/" target="_blank" rel="noopener">Usine Digitale — IA</a>
+        <a class="source-chip" href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a>
+        <a class="source-chip" href="https://www.journaldunet.com/intelligence-artificielle/" target="_blank" rel="noopener">Journal du Net — IA</a>
+        <a class="source-chip" href="https://siecledigital.fr/intelligence-artificielle/" target="_blank" rel="noopener">Siècle Digital — IA</a>
+      </div>
+    </div>
+
+    <div class="veille-block">
+      <h3>Synthèse personnelle</h3>
+      <p>
+        Au fil des articles suivis, je constate que l'IA s'intègre de plus en plus dans les outils du
+        quotidien des entreprises : assistants pour la rédaction et le support client, détection
+        automatisée d'anomalies sur les réseaux, ou encore aide à la supervision des infrastructures.
+        Pour un futur technicien SISR, cela signifie qu'il faudra non seulement administrer des systèmes
+        et des réseaux classiques, mais aussi savoir intégrer et sécuriser ces nouveaux outils d'IA, tout
+        en restant vigilant sur les risques qu'ils introduisent (dépendance aux éditeurs, protection des
+        données, nouvelles surfaces d'attaque). Je continuerai à mettre à jour cette synthèse au fur et à
+        mesure de ma veille.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Florent Boyer — Portfolio BTS SIO SISR
+</footer>
+
+<script>
+  const RSS_QUERY = "intelligence artificielle entreprises";
+  const GOOGLE_NEWS_RSS = "https://news.google.com/rss/search?q=" + encodeURIComponent(RSS_QUERY) + "&hl=fr&gl=FR&ceid=FR:fr";
+  const API_URL = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(GOOGLE_NEWS_RSS);
+
+  function timeAgo(dateStr){
+    const d = new Date(dateStr);
+    const diffMs = Date.now() - d.getTime();
+    const diffH = Math.floor(diffMs / 3600000);
+    if (diffH < 1) return "à l'instant";
+    if (diffH < 24) return "il y a " + diffH + "h";
+    const diffD = Math.floor(diffH / 24);
+    return "il y a " + diffD + "j";
+  }
+
+  async function loadVeilleRSS(){
+    const container = document.getElementById('rss-container');
+    const statusText = document.getElementById('rss-status-text');
+    const updated = document.getElementById('rss-updated');
+    statusText.textContent = "Actualisation…";
+    container.innerHTML = '<div class="rss-empty">Chargement des dernières actualités…</div>';
+
+    try {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error("Réponse invalide");
+      const data = await res.json();
+
+      if (!data.items || data.items.length === 0){
+        container.innerHTML = '<div class="rss-empty">Aucun article trouvé pour le moment. Réessaie plus tard.</div>';
+        statusText.textContent = "Aucun résultat";
+        return;
+      }
+
+      const items = data.items.slice(0, 8);
+      container.innerHTML = '<div class="rss-list">' + items.map(function(item){
+        const source = (item.author || (data.feed && data.feed.title) || "Google Actualités");
+        const title = item.title || "";
+        return '<a class="rss-item" href="' + item.link + '" target="_blank" rel="noopener" style="display:block;">' +
+          '<div class="rss-date">' + timeAgo(item.pubDate) + '</div>' +
+          '<div class="rss-title">' + title + '</div>' +
+          '<div class="rss-source">' + source + '</div>' +
+          '</a>';
+      }).join('') + '</div>';
+
+      statusText.textContent = "Flux actif — " + items.length + " articles";
+      updated.textContent = "Dernière actualisation : " + new Date().toLocaleString('fr-FR');
+    } catch (err) {
+      container.innerHTML = '<div class="rss-empty">Impossible de charger le flux en direct pour le moment (le service peut être temporairement indisponible). Consulte directement mes sources ci-dessous en attendant.</div>';
+      statusText.textContent = "Flux indisponible";
+    }
+  }
+
+  loadVeilleRSS();
+</script>
+
+</body>
+</html>
