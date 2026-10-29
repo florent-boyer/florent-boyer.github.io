@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille technologique — Florent Boyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .admin-bar{ display:none; background: var(--bg-panel); border: 1px solid var(--accent-2); border-radius: 8px; padding: 18px; margin-bottom: 24px; }
+  .admin-bar.on{ display:block; }
+  .admin-bar h3{ font-family: var(--font-mono); font-size: 14px; color: var(--accent-2); margin-bottom: 12px; }
+  .admin-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .admin-grid .full{ grid-column: 1 / -1; }
+  .admin-bar input, .admin-bar textarea{
+    width:100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 4px;
+    padding: 10px 12px; font-family: var(--font-sans); font-size: 14px;
+  }
+  .admin-bar input:focus, .admin-bar textarea:focus{ outline: 2px solid var(--accent); outline-offset: 1px; }
+  .admin-bar textarea{ resize: vertical; min-height: 60px; }
+  .admin-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; align-items:center; }
+  .admin-msg{ font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); }
+  .admin-msg.err{ color: var(--danger); }
+  .veille-list{ display:flex; flex-direction:column; gap: 12px; }
+  .veille-item{ background: var(--bg-panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; transition: border-color .2s; position:relative; }
+  .veille-item:hover{ border-color: var(--accent); }
+  .veille-item .v-meta{ font-family: var(--font-mono); font-size: 11px; color: var(--accent-2); margin-bottom: 6px; }
+  .veille-item a.v-title{ font-size: 15px; font-weight: 600; display:block; margin-bottom: 4px; }
+  .veille-item a.v-title:hover{ color: var(--accent); }
+  .veille-item .v-note{ color: var(--text-dim); font-size: 13.5px; margin-top: 6px; }
+  .veille-item .v-del{ position:absolute; top:10px; right:12px; background:transparent; border:1px solid var(--line); color: var(--text-dim); border-radius:4px; font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; cursor:pointer; display:none; }
+  .admin-on .veille-item .v-del{ display:block; }
+  .veille-item .v-del:hover{ border-color: var(--danger); color: var(--danger); }
+  @media (max-width: 720px){ .admin-grid{ grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">~/<span>florent-boyer</span></div>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="formation.html">Formation</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+      <a href="stage.html">Stage</a>
+      <a href="veille.html" class="active">Veille techno</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="cv.pdf" target="_blank" rel="noopener" class="nav-cv">Télécharger mon CV</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header wrap">
+    <div class="section-label">// 06 — veille technologique</div>
+    <h1 class="page-title">L'implémentation de l'intelligence artificielle dans les entreprises</h1>
+    <p class="page-sub">Suivi régulier de l'actualité et des évolutions autour de l'adoption de l'IA par les organisations.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="veille-block">
+      <h3>Pourquoi ce sujet ?</h3>
+      <p>
+        L'intelligence artificielle transforme progressivement la façon dont les entreprises travaillent :
+        automatisation de tâches, aide à la décision, support client, cybersécurité, gestion des infrastructures...
+        En tant que futur technicien en systèmes et réseaux, comprendre comment l'IA s'intègre dans les
+        organisations me permet d'anticiper les évolutions du métier et les nouveaux outils que je serai amené
+        à utiliser ou administrer.
+      </p>
+    </div>
+
+    <div class="veille-block">
+      <h3>Axes de veille</h3>
+      <ul>
+        <li>Outils d'IA générative utilisés en entreprise (support, rédaction, développement).</li>
+        <li>IA appliquée à l'administration système et réseau (supervision intelligente, détection d'anomalies).</li>
+        <li>Impact sur la cybersécurité (détection de menaces assistée par IA, mais aussi nouveaux risques).</li>
+        <li>Enjeux organisationnels : formation des équipes, adaptation des postes, cadre légal (RGPD, AI Act).</li>
+      </ul>
+    </div>
+
+    <div class="veille-block">
+      <h3>Méthodologie</h3>
+      <p>
+        Je sélectionne moi-même les articles que je lis et je les ajoute à la liste ci-dessous, avec un lien vers
+        la source d'origine et une courte note personnelle. Aucune donnée n'est récupérée automatiquement :
+        chaque article affiché a été choisi et lu par mes soins.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap" id="veille-section">
+    <div class="rss-header">
+      <div class="section-label" style="margin-bottom:0;">// mes articles sélectionnés</div>
+      <div class="rss-status"><span id="veille-count"></span></div>
+    </div>
+
+    <div class="admin-bar" id="admin-bar">
+      <h3>// ajouter un article (mode admin)</h3>
+      <div class="admin-grid">
+        <div class="full"><input type="url" id="f-url" placeholder="URL de l'article (https://...)" autocomplete="off"></div>
+        <div><input type="text" id="f-title" placeholder="Titre de l'article" maxlength="200"></div>
+        <div><input type="date" id="f-date"></div>
+        <div class="full"><textarea id="f-note" placeholder="Ma note personnelle (facultatif) : ce que j'en retiens" maxlength="500"></textarea></div>
+      </div>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="btn-add">+ Ajouter</button>
+        <button type="button" class="btn btn-ghost" id="btn-export">↓ Télécharger veille-data.js</button>
+        <button type="button" class="btn btn-ghost" id="btn-reset">Annuler mes modifs</button>
+        <span class="admin-msg" id="admin-msg"></span>
+      </div>
+    </div>
+
+    <div id="veille-container"></div>
+  </section>
+
+  <section class="wrap">
+    <div class="veille-block">
+      <h3>Mes sources de veille</h3>
+      <div class="sources-grid">
+        <a class="source-chip" href="https://www.usine-digitale.fr/intelligence-artificielle/" target="_blank" rel="noopener">Usine Digitale — IA</a>
+        <a class="source-chip" href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener">Le Monde Informatique</a>
+        <a class="source-chip" href="https://www.journaldunet.com/intelligence-artificielle/" target="_blank" rel="noopener">Journal du Net — IA</a>
+        <a class="source-chip" href="https://siecledigital.fr/intelligence-artificielle/" target="_blank" rel="noopener">Siècle Digital — IA</a>
+      </div>
+    </div>
+
+    <div class="veille-block">
+      <h3>Synthèse personnelle</h3>
+      <p>
+        [À compléter et à mettre à jour au fil de ta veille : ce que tu retiens des articles suivis, les tendances
+        qui reviennent souvent, et comment tu penses que cela concerne ton futur métier de technicien SISR.]
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Florent Boyer — Portfolio BTS SIO SISR
+</footer>
+
+<script src="veille-data.js"></script>
+<script>
+(function(){
+  var DRAFT_KEY = "veille_draft_v1";
+  var isAdmin = (location.hash === "#admin");
+  var published = Array.isArray(window.VEILLE_ITEMS) ? window.VEILLE_ITEMS : [];
+  var items = published.slice();
+
+  // En mode admin uniquement : reprendre le brouillon local s'il existe
+  if (isAdmin) {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      if (raw) { var d = JSON.parse(raw); if (Array.isArray(d)) items = d; }
+    } catch (e) {}
+    document.getElementById("admin-bar").classList.add("on");
+    document.getElementById("veille-section").classList.add("admin-on");
+    document.getElementById("f-date").value = new Date().toISOString().slice(0, 10);
+  }
+
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(ch){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];
+    });
+  }
+  function safeUrl(u){
+    try { var x = new URL(u); return (x.protocol === "http:" || x.protocol === "https:") ? x.href : null; }
+    catch (e) { return null; }
+  }
+  function host(u){ try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
+  function fmtDate(d){
+    if (!d) return "";
+    var dt = new Date(d + "T00:00:00");
+    return isNaN(dt) ? "" : dt.toLocaleDateString("fr-FR", {day:"numeric", month:"long", year:"numeric"});
+  }
+  function saveDraft(){ try { localStorage.setItem(DRAFT_KEY, JSON.stringify(items)); } catch (e) {} }
+  function msg(t, err){
+    var m = document.getElementById("admin-msg");
+    m.textContent = t; m.className = "admin-msg" + (err ? " err" : "");
+  }
+
+  function render(){
+    var c = document.getElementById("veille-container");
+    var count = document.getElementById("veille-count");
+    if (!items.length) {
+      c.innerHTML = '<div class="rss-empty">Aucun article pour le moment. Ma sélection arrive bientôt.</div>';
+      count.textContent = "";
+      return;
+    }
+    var sorted = items.map(function(it, i){ return {it: it, i: i}; })
+      .sort(function(a, b){ return String(b.it.date || "").localeCompare(String(a.it.date || "")); });
+    c.innerHTML = '<div class="veille-list">' + sorted.map(function(o){
+      var it = o.it, url = safeUrl(it.url);
+      if (!url) return "";
+      var title = it.title || host(url);
+      return '<div class="veille-item">' +
+        '<button type="button" class="v-del" data-i="' + o.i + '">Supprimer</button>' +
+        '<div class="v-meta">' + esc(fmtDate(it.date)) + (it.date ? " · " : "") + esc(host(url)) + '</div>' +
+        '<a class="v-title" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a>' +
+        (it.note ? '<div class="v-note">' + esc(it.note) + '</div>' : '') +
+        '</div>';
+    }).join("") + '</div>';
+    count.textContent = items.length + (items.length > 1 ? " articles" : " article");
+  }
+
+  if (isAdmin) {
+    document.getElementById("btn-add").addEventListener("click", function(){
+      var url = safeUrl(document.getElementById("f-url").value.trim());
+      var title = document.getElementById("f-title").value.trim();
+      var note = document.getElementById("f-note").value.trim();
+      var date = document.getElementById("f-date").value;
+      if (!url) { msg("URL invalide (elle doit commencer par https://)", true); return; }
+      if (!title) { msg("Ajoute un titre.", true); return; }
+      items.push({url: url, title: title, note: note, date: date});
+      saveDraft(); render();
+      document.getElementById("f-url").value = "";
+      document.getElementById("f-title").value = "";
+      document.getElementById("f-note").value = "";
+      msg("Ajouté. Pense à télécharger veille-data.js pour le publier.");
+    });
+    document.getElementById("veille-container").addEventListener("click", function(e){
+      var b = e.target.closest(".v-del");
+      if (!b) return;
+      items.splice(parseInt(b.getAttribute("data-i"), 10), 1);
+      saveDraft(); render();
+      msg("Supprimé. Télécharge veille-data.js pour publier.");
+    });
+    document.getElementById("btn-export").addEventListener("click", function(){
+      var js = "// Liste des articles de ma veille technologique.\n" +
+        "// Pour en ajouter : ouvrir veille.html#admin, remplir la barre, puis \"Télécharger veille-data.js\"\n" +
+        "// et remplacer ce fichier sur GitHub.\n" +
+        "window.VEILLE_ITEMS = " + JSON.stringify(items, null, 2) + ";\n";
+      var blob = new Blob([js], {type: "text/javascript"});
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = "veille-data.js";
+      document.body.appendChild(a); a.click(); a.remove();
+      msg("Fichier téléchargé : remplace veille-data.js sur GitHub.");
+    });
+    document.getElementById("btn-reset").addEventListener("click", function(){
+      try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+      items = published.slice(); render(); msg("Retour à la version publiée.");
+    });
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>
