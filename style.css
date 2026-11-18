@@ -20,12 +20,6 @@ body{
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-attachment: fixed;
-  background-position: -1px -1px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
